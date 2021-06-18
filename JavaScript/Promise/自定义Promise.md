@@ -60,3 +60,47 @@ class MyPromise {
   }
 }
 ```
+
+##### 上面的代码没有异步情况
+
+* Promise 处理异步情况，当调用 then 方法状态为 pending 时，此时上面没有做任何处理。
+* pending 时保存 成功回调 和 失败回调
+* 外部调用 resolve 或 reject 时，调用回调
+
+```js
+
+class MyPromise {
+  // 成功回调
+  successCallback = undefined;
+  // 失败回调
+  failCallback = undefined;
+
+  constructor (executor) {
+    executor(this.resolve, this.reject);
+  }
+
+  // 定义成箭头函数 我们在外部调用 函数内部的 this 指向 promise 实例
+  resolve = (value) => {
+    // ...
+    this.value = value;
+    // 成功回调存在调用成功回调函数
+    this.successCallback && this.successCallback(this.value);
+  }
+
+  reject = (reason) => {
+    // ...
+    this.reason = reason;
+    this.failCallback && this.failCallback(this.reason);
+  }
+
+  then (successCallback, failCallback) {
+    // 判断状态
+    if (this.status === FULFILLED) {
+      // ...
+    } else {
+      this.successCallback = successCallback;
+      this.failCallback = failCallback;
+    }
+  }
+}
+```

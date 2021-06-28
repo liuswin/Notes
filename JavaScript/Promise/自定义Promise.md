@@ -39,12 +39,14 @@ class MyPromise {
 
   // 定义成箭头函数 我们在外部调用 函数内部的 this 指向 promise 实例
   resolve = (value) => {
+    // 如果状态不是等待，阻止程序向下执行
     if (this.status !== PENDING) return;
     this.status = FULFILLED;
     this.value = value;
   }
 
   reject = (reason) => {
+    // 如果状态不是等待，阻止程序向下执行
     if (this.status !== PENDING) return;
     this.status = REJECTED;
     this.reason = reason;

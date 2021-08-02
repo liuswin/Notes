@@ -1,3 +1,7 @@
+React 性能优化除了普适性的优化手段：减少重绘与回流、服务端渲染、CDN等之外，React 有自身特色的性能优化思路，这些思路基本都围绕 **组件性能优化** 这个中心思想展开。
+
+下面 3 个思路是 React 面试中 “性能优化” 核心所在
+
 1. shouldComponentUpdate 规避冗余的更新逻辑
 2. PureComponent + immutable.js
 3. React.memo 和 useMemo
@@ -40,6 +44,57 @@ export default class ChildB extends React.Component {
   }
 }
 ```
+
+在共同父组件中，将 ChildA 和 ChildB 组合起来，并分别注入数据：
+
+```js
+import React from 'react';
+import ChildA from './ChildA';
+import ChildB from './ChildB';
+
+class App extends React.Component {
+  state = {
+    textA: 'A 的文本',
+    textB: 'B 的文本'
+  }
+  changeA = () => {
+    this.setState({
+      textA: 'A 的文本被修改'
+    })
+  }
+  changeB = () => {
+    this.setState({
+      textA: 'B 的文本被修改'
+    })
+  }
+  render() {
+    return (
+      <div className="App">
+        <button onClick={this.changeA}>点击修改A处的文本</button>
+        <button onClick={this.changeB}>点击修改B处的文本</button>
+        <ChildA text={this.state.textA}/>
+        <ChildB text={this.state.textB}/>
+      </div>
+    )
+  }
+}
+```
+
+通过点击两个按钮，我们可以分别对 ChildA 和 ChildB 中的文案进行修改。初次渲染时，两个组件的 render 函数都必然会被触发，因此控制台输出
+```shell
+child a render
+child b render
+```
+
+接下来点击修改 A 的按钮，我们期望只有 ChildA 重新渲染，但结果两个子组件的 re-render 都被执行了
+```shell
+child a render
+child b render
+child a render
+child b render
+```
+
+React 中，只要**父组件发生了更新，那么所有的子组件都会被无条件更新**。这就导致 ChildB 的 props 尽管没有发生任何变化，他本身也没有任何需要被更新的点，却还是会 re-render。
 
 #### 进阶玩法 PureComponent + immutable.js
 

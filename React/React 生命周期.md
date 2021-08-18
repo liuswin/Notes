@@ -1,5 +1,7 @@
 ### React 生命周期
 
+![React 16.4](https://user-images.githubusercontent.com/15181620/129828195-5bf183a0-771e-4d9b-aba3-c62e706f3360.png)
+
 当我们讨论生命周期的时候，一定是在讨论类组件。函数式组件没有生命周期，hook使用是模拟对应的回调函数。
 
 生命周期是一个组件从： 挂载 -> 更新 -> 卸载 这个完整的流程。而我们所说的回调函数 `componentDidMount`、`componentWillUnmount` 等等，只是再生命周期中会被按顺序调用的函数。
@@ -134,3 +136,15 @@ class ExampleComponent extends React.Component {
   该函数主要用于执行清理工作，比如组件内部的定时器。如果不清理会导致定时器一直执行，占用内存。
 
 ![react生命周期](https://github.com/liuswin/notes/blob/master/React/assets/react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png)
+
+### React 16 为什么要更改组件生命周期
+
+![React 16.4](https://user-images.githubusercontent.com/15181620/129828195-5bf183a0-771e-4d9b-aba3-c62e706f3360.png)
+
+经过上面的分析得知了如下这些被废弃的生命周期函数：
+
+* UNSAFE_componentWillMount
+* UNSAFE_componentWillReceiveProps
+* UNSAFE_componentWillUpdate
+
+为什么会更改

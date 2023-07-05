@@ -3,6 +3,6 @@
 * [dotenv](https://www.npmjs.com/package/dotenv)
 * [js-yaml](https://www.npmjs.com/package/js-yaml)
 
-## eslint-plugin
+## eslint-plugins
 
-* [eslint-plugin-import 顶部导入三方包排序插件](https://juejin.cn/post/7239725302014836796)
+* [eslint-plugin-import 顶部导入三方包排序](https://juejin.cn/post/7101703726733361183)

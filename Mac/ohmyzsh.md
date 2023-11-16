@@ -13,7 +13,17 @@ raw.githubusercontent.com
 
 ## (zsh 配置插件)[https://blog.osvlabs.com/?p=144]
 
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+```shell
+安装插件管理插件
+brew install zplug
+
+```
+
+在 `.zshrc` 中配置，详细配置查看 [zsh](https://github.com/zplug/zplug)
+```shell
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
+```
 
 ```shell
 # zsh-syntax-highlighting 命令高亮 红色代表没有此命令 绿色可能执行此命令

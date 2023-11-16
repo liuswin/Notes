@@ -10,3 +10,26 @@
 raw.github.com
 raw.githubusercontent.com
 ```
+
+## (zsh 配置插件)[https://blog.osvlabs.com/?p=144]
+
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+
+```shell
+# zsh-syntax-highlighting 命令高亮 红色代表没有此命令 绿色可能执行此命令
+zplug "zsh-users/zsh-syntax-highlighting"
+
+# git git命令alias, 使用 cat ~/.oh-my-zsh/plugins/git/git.plugin.zsh 查看所有
+zplug "plugins/git",   from:oh-my-zsh
+
+zplug "zsh-users/zsh-completions"
+
+# autosuggestions 补全命令历史
+zplug "zsh-users/zsh-autosuggestions"
+
+# sudo 按两下ESC，就会在命令行头部加上sudo
+zplug "plugins/sudo",   from:oh-my-zsh
+
+# Z 类似 autojump,快速跳转文件夹
+zplug "plugins/z",   from:oh-my-zsh 
+```

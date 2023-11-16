@@ -21,18 +21,20 @@ brew install zplug
 
 在 `.zshrc` 中配置，详细配置查看 [zsh](https://github.com/zplug/zplug)
 ```shell
-export ZPLUG_HOME=/usr/local/opt/zplug
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
 source $ZPLUG_HOME/init.zsh
 ```
 
 ```shell
 # zsh-syntax-highlighting 命令高亮 红色代表没有此命令 绿色可能执行此命令
-zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 # git git命令alias, 使用 cat ~/.oh-my-zsh/plugins/git/git.plugin.zsh 查看所有
 zplug "plugins/git",   from:oh-my-zsh
 
-zplug "zsh-users/zsh-completions"
+zplug "plugins/vi-mode", from:oh-my-zsh
+
+zplug 'zsh-users/zsh-completions', defer:2
 
 # autosuggestions 补全命令历史
 zplug "zsh-users/zsh-autosuggestions"

@@ -45,3 +45,8 @@ zplug "plugins/sudo", from:oh-my-zsh
 # Z 类似 autojump,快速跳转文件夹
 zplug "plugins/z", from:oh-my-zsh 
 ```
+
+```shell
+# --verbose 展示加载日志, 不想每次看到启动 terminal 看到日志，就移去参数
+zplug load --verbose
+```

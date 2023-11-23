@@ -1,6 +1,7 @@
 ## brew 软件管理
 
 [Homebrew完全指南](https://zhuanlan.zhihu.com/p/607620531)
+[brew install 安装指定版本软件](https://makeoptim.com/tool/brew-install-specific-version/)
 
 ## mac 软件网站
 

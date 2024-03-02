@@ -9,8 +9,12 @@
 
 
 ## mac 软件错误处理方式
-For a certain application run in Terminal:
+
+允许 “任何来源” 下载的 App 运行:  
+sudo spctl --master-disable
+
+移除应用的安全隔离属性:  
 sudo xattr -rd com.apple.quarantine /Applications/LockedApp.app
 
-To disable checks globally run in Terminal:
-sudo spctl --master-disable
+[更多处理方式](https://sysin.org/blog/macos-if-crashes-when-opening/)
+
